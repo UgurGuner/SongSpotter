@@ -58,6 +58,10 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation( "androidx.core:core-splashscreen:1.0.1")
 
+    // Navigation Component
+    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+
     //Api And Image Loading
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.github.bumptech.glide:glide:4.15.1")
