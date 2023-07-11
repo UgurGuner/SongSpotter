@@ -1,4 +1,4 @@
-package com.eugurguner.songspotter.presentation
+package com.eugurguner.songspotter.presentation.core
 
 import android.content.Intent
 import android.os.Bundle

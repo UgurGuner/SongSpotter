@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/song_spotter_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/song_spotter_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.eugurguner.songspotter.presentation.homePage.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_pop"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/libraryFragment"
+        android:name="com.eugurguner.songspotter.presentation.libraryPage.LibraryFragment"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library">
+
+        <action
+            android:id="@+id/action_libraryFragment_pop"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGridList"
+        android:name="com.eugurguner.songspotter.presentation.gridList.FragmentGridList"
+        android:label="fragment_grid_list"
+        tools:layout="@layout/fragment_grid_list">
+
+        <action
+            android:id="@+id/action_libraryFragment_pop"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 
 </navigation>

@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -56,7 +57,9 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
     implementation( "androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")

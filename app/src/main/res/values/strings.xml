@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">SongSpotter</string>
+    <string name="tab1">Home</string>
+    <string name="tab2">Total</string>
+    <string name="tab3">List</string>
+    <string name="tab4">H-List</string>
+    <string name="username">Ergun Ugur Guner</string>
+    <string name="totalCount">Total Count Of Result is: {0}</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
