@@ -1,7 +1,6 @@
 package com.eugurguner.songspotter.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import com.eugurguner.songspotter.data.data_source.SongDatabase
 import com.eugurguner.songspotter.data.repository.SongRepositoryImpl
