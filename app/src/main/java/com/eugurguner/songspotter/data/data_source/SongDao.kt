@@ -1,6 +1,7 @@
 package com.eugurguner.songspotter.data.data_source
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -25,6 +26,9 @@ interface SongDao {
 
     @Query("DELETE FROM song")
     suspend fun deleteSongs()
+
+    @Delete
+    suspend fun deleteSong(song: Song)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSongs(list: List<Song>)

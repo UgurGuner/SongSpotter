@@ -48,20 +48,12 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/lnrDetailArrow"
+
+    <com.eugurguner.songspotter.presentation.core.component.RightArrowView
+        android:id="@+id/rightArrowView"
         android:gravity="center"
+        android:layout_gravity="end|center_vertical"
         android:layout_width="40dp"
-        android:layout_height="40dp">
-
-        <ImageView
-            android:src="@drawable/right_arrow_white"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:contentDescription="detailArrow"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
+        android:layout_height="40dp" />
 
 </LinearLayout>

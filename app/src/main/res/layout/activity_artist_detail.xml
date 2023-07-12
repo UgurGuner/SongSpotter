@@ -1,70 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ss_background_black"
+    android:orientation="vertical"
     tools:context=".presentation.homePage.HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/lnrUpperView"
-        android:paddingEnd="22dp"
-        android:paddingTop="22dp"
-        android:paddingBottom="22dp"
-        android:background="@drawable/gradient_linear_background_upper"
-        android:orientation="horizontal"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_gravity="center_vertical"
-            android:id="@+id/lnrDetailArrow"
-            android:layout_marginEnd="16dp"
-            android:gravity="center"
-            android:layout_width="60dp"
-            android:layout_height="60dp">
-
-            <ImageView
-                android:src="@drawable/left_arrow_white"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:contentDescription="detailArrow"
-                tools:ignore="HardcodedText" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:background="@drawable/image_background_eighty_radius"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:id="@+id/lnrUpperView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gradient_linear_background_upper"
+                android:orientation="horizontal"
+                android:paddingTop="22dp"
+                android:paddingEnd="22dp"
+                android:paddingBottom="22dp">
 
-                <ImageView
-                    android:id="@+id/imgArtist"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:contentDescription="userImage"
-                    tools:ignore="HardcodedText" />
+                <RelativeLayout
+                    android:id="@+id/lnrDetailArrow"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:contentDescription="detailArrow"
+                        android:src="@drawable/left_arrow_white"
+                        tools:ignore="HardcodedText" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/image_background_eighty_radius">
+
+                        <ImageView
+                            android:id="@+id/imgArtist"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:contentDescription="userImage"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtArtistName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:includeFontPadding="false"
+                        android:paddingTop="2dp"
+                        android:textAppearance="@style/SS24"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_marginStart="16dp"
-                android:id="@+id/txtArtistName"
-                android:textColor="@color/white"
-                android:includeFontPadding="false"
-                android:paddingTop="2dp"
-                android:textAppearance="@style/SS24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:padding="22dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtTrackName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingTop="2dp"
+                    android:textAppearance="@style/SS24"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/txtAlbumName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingTop="2dp"
+                    android:textAppearance="@style/SS24"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/txtTrackPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingTop="2dp"
+                    android:textAppearance="@style/SS24"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/txtReleaseDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingTop="2dp"
+                    android:textAppearance="@style/SS24"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/txtLongDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingTop="2dp"
+                    android:textAppearance="@style/SS24"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-</RelativeLayout>
+</LinearLayout>

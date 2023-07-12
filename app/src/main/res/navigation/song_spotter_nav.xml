@@ -31,9 +31,22 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentGridList"
-        android:name="com.eugurguner.songspotter.presentation.gridList.FragmentGridList"
+        android:name="com.eugurguner.songspotter.presentation.gridListPage.FragmentGridList"
         android:label="fragment_grid_list"
         tools:layout="@layout/fragment_grid_list">
+
+        <action
+            android:id="@+id/action_libraryFragment_pop"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHorizontalList"
+        android:name="com.eugurguner.songspotter.presentation.horizontalListPage.FragmentHorizontalList"
+        android:label="fragment_horizontal_list"
+        tools:layout="@layout/fragment_horizontal_list" >
 
         <action
             android:id="@+id/action_libraryFragment_pop"

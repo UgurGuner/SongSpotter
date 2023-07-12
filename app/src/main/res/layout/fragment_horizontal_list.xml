@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ss_background_black"
+    tools:context=".presentation.homePage.HomeFragment">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:id="@+id/lnrUpperView"
+        android:padding="22dp"
+        android:background="@drawable/gradient_linear_background_upper"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="@drawable/image_background_eighty_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgUser"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="userImage"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="16dp"
+            android:id="@+id/txtUserName"
+            android:text="@string/username"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="7dp"
+            android:paddingTop="2dp"
+            android:textAppearance="@style/SS24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="22dp"
+        android:layout_below="@id/lnrUpperView"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

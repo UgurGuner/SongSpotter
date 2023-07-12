@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.eugurguner.songspotter.data.data_source.SongDatabase
 import com.eugurguner.songspotter.data.repository.SongRepositoryImpl
 import com.eugurguner.songspotter.domain.repository.SongRepository
+import com.eugurguner.songspotter.domain.use_case.FetchSongsUseCase
 import com.eugurguner.songspotter.domain.use_case.GetSongsUseCase
 import com.eugurguner.songspotter.domain.use_case.SongUseCases
 import com.eugurguner.songspotter.domain.util.VolleySingleton
@@ -41,6 +42,7 @@ object AppModule {
     fun provideNoteUseCases(songRepository: SongRepository): SongUseCases {
         return SongUseCases(
             getSongsUseCase = GetSongsUseCase(songRepository = songRepository),
+            fetchSongsUseCase = FetchSongsUseCase(songRepository = songRepository)
         )
     }
 

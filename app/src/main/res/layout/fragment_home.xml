@@ -52,9 +52,17 @@
 
             </LinearLayout>
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_below="@id/lnrUpperView"
                 android:id="@+id/recyclerView"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

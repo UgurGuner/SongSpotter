@@ -25,6 +25,10 @@ class SongRepositoryImpl(
         return songDao.insertSongs(list)
     }
 
+    override suspend fun deleteSong(song: Song) {
+        return songDao.deleteSong(song)
+    }
+
     override suspend fun deleteSongs() {
         return songDao.deleteSongs()
     }

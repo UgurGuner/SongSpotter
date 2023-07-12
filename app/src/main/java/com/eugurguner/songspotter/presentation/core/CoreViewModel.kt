@@ -5,9 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.eugurguner.songspotter.domain.model.CountEntity
 import com.eugurguner.songspotter.domain.model.Song
 import com.eugurguner.songspotter.domain.repository.SongRepository
-import com.eugurguner.songspotter.domain.use_case.GetSongsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -40,6 +38,12 @@ class CoreViewModel @Inject constructor(
                 count = songRepository.getCountEntity()?.count ?: 0
                 onLocalData(dataList, count)
             }
+        }
+    }
+
+    fun deleteSong(song: Song) {
+        viewModelScope.launch {
+         songRepository.deleteSong(song)
         }
     }
 

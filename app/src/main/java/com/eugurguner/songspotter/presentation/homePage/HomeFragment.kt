@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -20,7 +20,6 @@ import com.eugurguner.songspotter.R
 import com.eugurguner.songspotter.databinding.FragmentHomeBinding
 import com.eugurguner.songspotter.presentation.detail.ActivityArtistDetail
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
@@ -49,15 +48,20 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.swipeRefresh.setOnRefreshListener(this)
+        activity?.onBackPressedDispatcher?.addCallback(onBackPressedCallback)
         updateUI()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun updateUI() {
 
+        changeLoadingStatus(isLoading = true)
+
         homeViewModel.songs.observe(viewLifecycleOwner) {
 
             isLoadingPagination = false
+
+            changeLoadingStatus(isLoading = false)
 
             adapter?.addItems(it ?: arrayListOf())
 
@@ -128,6 +132,8 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun fetchList(isRefreshing: Boolean = false) {
 
+        changeLoadingStatus(isLoading = isRefreshing)
+
         if (isRefreshing) {
 
             isLoadingPagination = false
@@ -169,6 +175,24 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         currentPage = 0
 
         fetchList(isRefreshing = true)
+
+    }
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            activity?.finishAffinity()
+        }
+    }
+
+    private fun changeLoadingStatus(isLoading: Boolean) {
+
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.recyclerView.visibility = View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.recyclerView.visibility = View.VISIBLE
+        }
 
     }
 

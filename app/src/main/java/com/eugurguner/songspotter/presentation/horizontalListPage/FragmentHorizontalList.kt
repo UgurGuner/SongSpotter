@@ -1,4 +1,4 @@
-package com.eugurguner.songspotter.presentation.gridList
+package com.eugurguner.songspotter.presentation.horizontalListPage
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,30 +8,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.eugurguner.songspotter.R
-import com.eugurguner.songspotter.databinding.FragmentGridListBinding
+import com.eugurguner.songspotter.databinding.FragmentHorizontalListBinding
+import com.eugurguner.songspotter.domain.model.Song
 import com.eugurguner.songspotter.presentation.core.CoreViewModel
 import com.eugurguner.songspotter.presentation.detail.ActivityArtistDetail
-import com.eugurguner.songspotter.presentation.homePage.HomeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FragmentGridList : Fragment() {
+class FragmentHorizontalList : Fragment() {
 
-    private lateinit var binding: FragmentGridListBinding
+    private lateinit var binding: FragmentHorizontalListBinding
     private val coreViewModel: CoreViewModel by viewModels()
-    private var adapter: HomeAdapter? = null
+    private var adapter: HorizontalListAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentGridListBinding.inflate(LayoutInflater.from(context), container, false)
+        binding =
+            FragmentHorizontalListBinding.inflate(LayoutInflater.from(context), container, false)
 
         return binding.root
     }
@@ -52,20 +53,37 @@ class FragmentGridList : Fragment() {
 
     private fun setUpAdapter() {
 
-        adapter = HomeAdapter(arrayListOf()) {
-            Intent(context, ActivityArtistDetail::class.java).apply {
-                putExtra("data", it)
-                startActivity(this)
-            }
-        }
+        adapter = HorizontalListAdapter(
+            list = arrayListOf(),
+            onSongClicked = {
+                Intent(context, ActivityArtistDetail::class.java).apply {
+                    putExtra("data", it)
+                    startActivity(this)
+                }
+            }, onDeleteClicked = { song, position ->
+                deleteSong(song, position)
+            })
 
         binding.recyclerView.adapter = adapter
 
-        binding.recyclerView.layoutManager = GridLayoutManager(context, 2,GridLayoutManager.VERTICAL, false)
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         coreViewModel.getLocalData { data, _ ->
             adapter?.addItems(data)
         }
+
+    }
+
+    private fun deleteSong(song: Song, position: Int) {
+
+        coreViewModel.deleteSong(song)
+
+        adapter?.list?.removeAt(position)
+
+        adapter?.notifyItemRemoved(position)
+
+        adapter?.notifyItemRangeChanged(position, adapter?.list?.size ?: 0)
 
     }
 

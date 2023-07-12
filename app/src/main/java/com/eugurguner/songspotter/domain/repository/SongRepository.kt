@@ -14,6 +14,8 @@ interface SongRepository {
 
     suspend fun deleteSongs()
 
+    suspend fun deleteSong(song: Song)
+
     suspend fun getCountEntity(): CountEntity?
 
     suspend fun insertCountOfSongs(countEntity: CountEntity)

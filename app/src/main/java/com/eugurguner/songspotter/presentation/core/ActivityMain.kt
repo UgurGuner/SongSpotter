@@ -67,6 +67,11 @@ class ActivityMain : AppCompatActivity() {
                     true
                 }
 
+                R.id.destination_item4 -> {
+                    navController.navigate(R.id.fragmentHorizontalList)
+                    true
+                }
+
                 else -> {
                     false
                 }
