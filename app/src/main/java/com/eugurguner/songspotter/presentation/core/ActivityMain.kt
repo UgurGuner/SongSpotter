@@ -35,7 +35,6 @@ class ActivityMain : AppCompatActivity() {
     }
 
     private fun setBottomNavigationBar() {
-
         val navController = findNavController(R.id.navHostFragment)
 
         navController.enableOnBackPressed(false)
@@ -51,7 +50,6 @@ class ActivityMain : AppCompatActivity() {
             this.selectedTab = item.itemId
 
             when (item.itemId) {
-
                 R.id.destination_item1 -> {
                     navController.navigate(R.id.homeFragment)
                     true
@@ -75,11 +73,8 @@ class ActivityMain : AppCompatActivity() {
                 else -> {
                     false
                 }
-
             }
-
         }
-
     }
 
     private fun fetchData() {
@@ -91,5 +86,4 @@ class ActivityMain : AppCompatActivity() {
             finishAffinity()
         }
     }
-
 }

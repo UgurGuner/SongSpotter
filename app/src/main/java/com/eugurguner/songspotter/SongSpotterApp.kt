@@ -4,7 +4,7 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class SongSpotterApp: Application() {
+class SongSpotterApp : Application() {
 
     companion object {
         lateinit var instance: SongSpotterApp
@@ -15,5 +15,4 @@ class SongSpotterApp: Application() {
         super.onCreate()
         instance = this
     }
-
 }

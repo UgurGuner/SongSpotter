@@ -7,15 +7,12 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.eugurguner.songspotter.R
 
 fun Activity.changeBarColors(color: Int) {
-
     window?.let {
-
         val wic = WindowInsetsControllerCompat(it, it.decorView)
 
         wic.isAppearanceLightStatusBars = true
 
         wic.isAppearanceLightNavigationBars = true
-
     }
 
     window.statusBarColor = ContextCompat.getColor(applicationContext, color)
@@ -25,5 +22,4 @@ fun Activity.changeBarColors(color: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
         window.navigationBarDividerColor = ContextCompat.getColor(applicationContext, R.color.ss_gray)
     }
-
 }

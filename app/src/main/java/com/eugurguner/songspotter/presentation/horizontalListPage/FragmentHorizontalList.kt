@@ -2,11 +2,11 @@ package com.eugurguner.songspotter.presentation.horizontalListPage
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -27,10 +27,10 @@ class FragmentHorizontalList : Fragment() {
     private var adapter: HorizontalListAdapter? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding =
             FragmentHorizontalListBinding.inflate(LayoutInflater.from(context), container, false)
 
@@ -44,15 +44,12 @@ class FragmentHorizontalList : Fragment() {
     }
 
     private fun updateUI() {
-
         setUserImage()
 
         setUpAdapter()
-
     }
 
     private fun setUpAdapter() {
-
         adapter = HorizontalListAdapter(
             list = arrayListOf(),
             onSongClicked = {
@@ -62,7 +59,8 @@ class FragmentHorizontalList : Fragment() {
                 }
             }, onDeleteClicked = { song, position ->
                 deleteSong(song, position)
-            })
+            }
+        )
 
         binding.recyclerView.adapter = adapter
 
@@ -72,11 +70,9 @@ class FragmentHorizontalList : Fragment() {
         coreViewModel.getLocalData { data, _ ->
             adapter?.addItems(data)
         }
-
     }
 
     private fun deleteSong(song: Song, position: Int) {
-
         coreViewModel.deleteSong(song)
 
         adapter?.list?.removeAt(position)
@@ -84,17 +80,14 @@ class FragmentHorizontalList : Fragment() {
         adapter?.notifyItemRemoved(position)
 
         adapter?.notifyItemRangeChanged(position, adapter?.list?.size ?: 0)
-
     }
 
     private fun setUserImage() {
-
         try {
             Glide.with(binding.root.context).load(R.drawable.profile_image)
                 .transform(CenterCrop(), RoundedCorners(160)).into(binding.imgUser)
         } catch (_: Throwable) {
         }
-
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -102,5 +95,4 @@ class FragmentHorizontalList : Fragment() {
             activity?.finishAffinity()
         }
     }
-
 }

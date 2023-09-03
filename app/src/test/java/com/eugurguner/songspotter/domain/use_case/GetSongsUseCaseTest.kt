@@ -15,7 +15,6 @@ class GetSongsUseCaseTest {
 
     @Before
     fun setUp() {
-
         fakeRepository = FakeRepository()
         getSongsUseCase = GetSongsUseCase(fakeRepository)
 
@@ -68,16 +67,12 @@ class GetSongsUseCaseTest {
         runBlocking {
             fakeRepository.insertSongs(songsToInsert)
         }
-
     }
 
     @Test
     fun `Songs If Inserted`() = runBlocking {
-
         val songs = getSongsUseCase.invoke().first()
 
         assertThat(songs.isNotEmpty()).isTrue()
-
     }
-
 }

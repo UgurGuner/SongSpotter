@@ -28,7 +28,6 @@ class CoreViewModel @Inject constructor(
     }
 
     fun getLocalData(onLocalData: (ArrayList<Song>, Int) -> Unit) {
-
         var dataList: ArrayList<Song>
         var count: Int
 
@@ -43,8 +42,7 @@ class CoreViewModel @Inject constructor(
 
     fun deleteSong(song: Song) {
         viewModelScope.launch {
-         songRepository.deleteSong(song)
+            songRepository.deleteSong(song)
         }
     }
-
 }

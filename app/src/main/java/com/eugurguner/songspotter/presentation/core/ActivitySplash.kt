@@ -30,15 +30,12 @@ class ActivitySplash : AppCompatActivity() {
             delay(2000)
             goToHomePage()
         }
-
     }
 
     private fun goToHomePage() {
-
         Intent(this, ActivityMain::class.java).apply {
             startActivity(this)
         }
-
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -46,5 +43,4 @@ class ActivitySplash : AppCompatActivity() {
             finish()
         }
     }
-
 }

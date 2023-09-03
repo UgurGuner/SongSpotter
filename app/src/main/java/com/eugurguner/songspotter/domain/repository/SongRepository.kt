@@ -31,5 +31,4 @@ interface SongRepository {
     fun fetchLocalData(
         onSuccess: (List<Song>, Int) -> Unit
     )
-
 }

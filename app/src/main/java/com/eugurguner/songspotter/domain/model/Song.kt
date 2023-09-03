@@ -46,5 +46,5 @@ data class Song(
     var shortDescription: String?,
     var longDescription: String?,
     var hasITunesExtras: Boolean?,
-    @PrimaryKey val id: Int? = null,
+    @PrimaryKey val id: Int? = null
 ) : Parcelable

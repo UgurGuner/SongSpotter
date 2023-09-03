@@ -2,11 +2,11 @@ package com.eugurguner.songspotter.presentation.gridListPage
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -27,10 +27,10 @@ class FragmentGridList : Fragment() {
     private var adapter: HomeAdapter? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentGridListBinding.inflate(LayoutInflater.from(context), container, false)
 
         return binding.root
@@ -43,15 +43,12 @@ class FragmentGridList : Fragment() {
     }
 
     private fun updateUI() {
-
         setUserImage()
 
         setUpAdapter()
-
     }
 
     private fun setUpAdapter() {
-
         adapter = HomeAdapter(arrayListOf()) {
             Intent(context, ActivityArtistDetail::class.java).apply {
                 putExtra("data", it)
@@ -61,22 +58,19 @@ class FragmentGridList : Fragment() {
 
         binding.recyclerView.adapter = adapter
 
-        binding.recyclerView.layoutManager = GridLayoutManager(context, 2,GridLayoutManager.VERTICAL, false)
+        binding.recyclerView.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
 
         coreViewModel.getLocalData { data, _ ->
             adapter?.addItems(data)
         }
-
     }
 
     private fun setUserImage() {
-
         try {
             Glide.with(binding.root.context).load(R.drawable.profile_image)
                 .transform(CenterCrop(), RoundedCorners(160)).into(binding.imgUser)
         } catch (_: Throwable) {
         }
-
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -84,5 +78,4 @@ class FragmentGridList : Fragment() {
             activity?.finishAffinity()
         }
     }
-
 }

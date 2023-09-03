@@ -22,13 +22,11 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNoteDatabase(app: Application): SongDatabase {
-
         return Room.databaseBuilder(
             context = app,
             klass = SongDatabase::class.java,
             name = SongDatabase.DATABASE_NAME
         ).build()
-
     }
 
     @Provides
@@ -51,5 +49,4 @@ object AppModule {
     fun provideVolleySingleton(): VolleySingleton {
         return VolleySingleton.getInstance()
     }
-
 }

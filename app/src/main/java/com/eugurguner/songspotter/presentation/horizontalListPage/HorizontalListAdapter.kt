@@ -14,7 +14,6 @@ class HorizontalListAdapter(
 ) : RecyclerView.Adapter<HorizontalListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalListViewHolder {
-
         val binding =
             HorizontalItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
@@ -22,7 +21,6 @@ class HorizontalListAdapter(
     }
 
     override fun onBindViewHolder(holder: HorizontalListViewHolder, position: Int) {
-
         holder.bindItems(list[position])
 
         holder.binding.imgCancel.setOnClickListener {
@@ -30,7 +28,6 @@ class HorizontalListAdapter(
         }
 
         holder.itemView.setOnClickListener { onSongClicked(list[position]) }
-
     }
 
     override fun getItemCount(): Int {
@@ -39,11 +36,8 @@ class HorizontalListAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun addItems(list: List<Song>) {
-
         this.list.addAll(list)
 
         notifyDataSetChanged()
-
     }
-
 }

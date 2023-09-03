@@ -32,5 +32,4 @@ interface SongDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSongs(list: List<Song>)
-
 }

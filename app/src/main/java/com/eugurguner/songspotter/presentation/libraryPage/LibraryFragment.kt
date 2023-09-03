@@ -2,11 +2,11 @@ package com.eugurguner.songspotter.presentation.libraryPage
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -27,14 +27,13 @@ class LibraryFragment : Fragment() {
     private var adapter: HomeAdapter? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentLibraryBinding.inflate(LayoutInflater.from(context), container, false)
 
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,15 +43,12 @@ class LibraryFragment : Fragment() {
     }
 
     private fun updateUI() {
-
         setUserImage()
 
         setUpAdapter()
-
     }
 
     private fun setUpAdapter() {
-
         adapter = HomeAdapter(arrayListOf()) {
             Intent(context, ActivityArtistDetail::class.java).apply {
                 putExtra("data", it)
@@ -68,7 +64,6 @@ class LibraryFragment : Fragment() {
             adapter?.addItems(data)
             setCount(count)
         }
-
     }
 
     private fun setCount(count: Int) {
@@ -76,13 +71,11 @@ class LibraryFragment : Fragment() {
     }
 
     private fun setUserImage() {
-
         try {
             Glide.with(binding.root.context).load(R.drawable.profile_image)
                 .transform(CenterCrop(), RoundedCorners(160)).into(binding.imgUser)
         } catch (_: Throwable) {
         }
-
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -90,5 +83,4 @@ class LibraryFragment : Fragment() {
             activity?.finishAffinity()
         }
     }
-
 }

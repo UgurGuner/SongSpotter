@@ -12,5 +12,4 @@ class RightArrowView(context: Context?, attrs: AttributeSet?) :
     init {
         RightArrowViewBinding.inflate(LayoutInflater.from(context), this, true)
     }
-
 }

@@ -38,20 +38,16 @@ class ActivityArtistDetail : AppCompatActivity() {
         }
 
         updateUI()
-
     }
 
     @SuppressLint("SetTextI18n")
     private fun updateUI() {
-
         if (!song.artworkUrl100.isNullOrEmpty()) {
-
             try {
                 Glide.with(binding.root.context).load(song.artworkUrl100 ?: "")
                     .transform(CenterCrop(), RoundedCorners(160)).into(binding.imgArtist)
             } catch (_: Throwable) {
             }
-
         }
 
         binding.txtArtistName.text = song.artistName ?: ""
@@ -66,13 +62,10 @@ class ActivityArtistDetail : AppCompatActivity() {
             "Track Price: ${song.currency ?: ""}${song.trackPrice?.formatPrice()}"
 
         binding.txtLongDescription.text = song.longDescription ?: ""
-
     }
 
     private fun dateFormat(day: String?): String? {
-
         return try {
-
             if (!day.isNullOrEmpty()) {
                 val format1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale("tr"))
                 val dt1: Date? = format1.parse(day)
@@ -81,11 +74,8 @@ class ActivityArtistDetail : AppCompatActivity() {
             } else {
                 ""
             }
-
         } catch (_: Throwable) {
             ""
         }
-
     }
-
 }

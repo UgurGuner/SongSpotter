@@ -13,7 +13,6 @@ class HomeAdapter(
 ) : RecyclerView.Adapter<HomeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-
         val binding =
             ArtistItemVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
@@ -21,11 +20,9 @@ class HomeAdapter(
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-
         holder.bindItems(list[position])
 
         holder.itemView.setOnClickListener { onSongClicked(list[position]) }
-
     }
 
     override fun getItemCount(): Int {
@@ -34,11 +31,8 @@ class HomeAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun addItems(list: List<Song>) {
-
         this.list.addAll(list)
 
         notifyDataSetChanged()
-
     }
-
 }

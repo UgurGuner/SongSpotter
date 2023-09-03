@@ -9,7 +9,6 @@ fun Double.formatPrice(): String {
 }
 
 fun Int.formatPrice(): String {
-
     return try {
         toString()
             .reversed()
@@ -19,5 +18,4 @@ fun Int.formatPrice(): String {
     } catch (_: Throwable) {
         "0"
     }
-
 }

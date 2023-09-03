@@ -6,7 +6,7 @@ import com.eugurguner.songspotter.domain.repository.SongRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class FakeRepository: SongRepository {
+class FakeRepository : SongRepository {
 
     private val songs: ArrayList<Song> = arrayListOf()
     private var countEntity: CountEntity = CountEntity(count = 0)

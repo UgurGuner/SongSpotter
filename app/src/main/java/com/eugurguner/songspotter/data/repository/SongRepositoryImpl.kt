@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SongRepositoryImpl(
     private val songDao: SongDao
-): SongRepository {
+) : SongRepository {
 
     override fun getSongs(): Flow<List<Song>> {
         return songDao.getSongs()
@@ -51,7 +51,9 @@ class SongRepositoryImpl(
         val url = "https://itunes.apple.com/search?term=${searchTerm.replace(" ", "+")}&limit=$limit&offset=$offset"
 
         val request = JsonObjectRequest(
-            Request.Method.GET, url, null,
+            Request.Method.GET,
+            url,
+            null,
             { response ->
                 val songs = mutableListOf<Song>()
                 val count = response.optInt("resultCount")
@@ -111,11 +113,12 @@ class SongRepositoryImpl(
     }
 
     override fun fetchLocalData(onSuccess: (List<Song>, Int) -> Unit) {
-
         val url = "https://itunes.apple.com/search?term=jack+johnson"
 
         val request = JsonObjectRequest(
-            Request.Method.GET, url, null,
+            Request.Method.GET,
+            url,
+            null,
             { response ->
                 val songs = mutableListOf<Song>()
                 val count = response.optInt("resultCount")
@@ -170,7 +173,5 @@ class SongRepositoryImpl(
         )
 
         VolleySingleton.getInstance().addToRequestQueue(request)
-
     }
-
 }

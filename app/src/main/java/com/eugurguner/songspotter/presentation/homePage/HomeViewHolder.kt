@@ -10,22 +10,16 @@ import com.eugurguner.songspotter.domain.model.Song
 class HomeViewHolder(private val binding: ArtistItemVerticalBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindItems(song: Song) {
-
         if (!song.artworkUrl100.isNullOrEmpty()) {
-
             try {
                 Glide.with(binding.root.context).load(song.artworkUrl100 ?: "")
                     .transform(CenterCrop(), RoundedCorners(5)).into(binding.imgItem)
             } catch (_: Throwable) {
             }
-
         }
 
         binding.txtArtistName.text = song.artistName ?: ""
 
         binding.txtTrackName.text = song.trackName ?: ""
-
     }
-
-
 }

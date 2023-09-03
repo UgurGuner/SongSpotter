@@ -17,15 +17,12 @@ class HorizontalListViewHolder(val binding: HorizontalItemBinding) : RecyclerVie
 
     @SuppressLint("SetTextI18n")
     fun bindItems(song: Song) {
-
         if (!song.artworkUrl100.isNullOrEmpty()) {
-
             try {
                 Glide.with(binding.root.context).load(song.artworkUrl100 ?: "")
                     .transform(CenterCrop(), RoundedCorners(5)).into(binding.imgItem)
             } catch (_: Throwable) {
             }
-
         }
 
         binding.txtArtistName.text = song.artistName ?: ""
@@ -35,27 +32,20 @@ class HorizontalListViewHolder(val binding: HorizontalItemBinding) : RecyclerVie
         binding.txtReleaseDate.text = "Release Date: ${dateFormat(song.releaseDate ?: "")}"
 
         binding.txtTrackPrice.text = "Track Price: ${song.currency ?: ""}${song.trackPrice?.formatPrice()}"
-
     }
 
     private fun dateFormat(day: String?): String? {
-
         return try {
-
             if (!day.isNullOrEmpty()) {
-                val format1 = SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss'Z'", Locale("tr"))
+                val format1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale("tr"))
                 val dt1: Date? = format1.parse(day)
                 val format2: DateFormat = SimpleDateFormat("dd.MM.yy", Locale("tr"))
                 format2.format(dt1 ?: "")
             } else {
                 ""
             }
-
         } catch (_: Throwable) {
             ""
         }
-
     }
-
-
 }
